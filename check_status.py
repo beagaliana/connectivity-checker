@@ -1,33 +1,34 @@
-import urllib.request
-import sys
-import socket
- 
-# Check status using urllib
-def get_status_code(url):
-    return urllib.request.urlopen(url).getcode()
+import pycurl, validators
 
-# Check if socket on the server is listening
-def check_socket_server(host, port):
-    addr_info = socket.getaddrinfo(host, port, socket.AF_INET, socket.SOCK_STREAM)
-    for family, socktype, proto, canonname, sockaddr in addr_info:
-        s = socket.socket(family, socktype, proto)
-        try:
-            s.connect(sockaddr)
-        except socket.error:
-            return False
-        else:
-            s.close()
-            return True
 
-def main():
-#    url = str(input('Type the site you want to check: '))
-#    print(get_status_code(url))
-    host = input('Host: ')
-    port = int(input('Port: '))
-    if check_socket_server(host, port):
-        print("Server is UP")
-    else:
-        print("Server is DOWN")
+def url_exists(url):
+	
+	#Check if the given URL really exists
+	
+	if validators.url(url):
+		c = pycurl.Curl()
+		c.setopt(pycurl.NOBODY, True)
+		c.setopt(pycurl.FOLLOWLOCATION, False)
+		c.setopt(pycurl.CONNECTTIMEOUT, 10)
+		c.setopt(pycurl.TIMEOUT, 10)
+		c.setopt(pycurl.COOKIEFILE, '')
+		c.setopt(pycurl.URL, url)
+		try:
+			c.perform()
+			response_code = c.getinfo(pycurl.RESPONSE_CODE)
+			c.close()
+			return True if response_code < 400 else False
+		except pycurl.error as err:
+			errno, errstr = err
+			raise OSError('An error occurred: {}'.format(errstr))
+	else:
+		raise ValueError('"{}" is not a valid url'.format(url))
 
-if __name__=='__main__':
-    main()
+
+print("WEB CONNECTIVITY CHECKER TOOL")
+host = input('Host: ')
+
+if (url_exists("http://"+host)):
+	print("CONNECTION SUCCESSFUL: website up.")
+else:
+	print("CONNECTION FAILED: website down.")
