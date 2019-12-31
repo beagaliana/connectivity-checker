@@ -21,7 +21,9 @@ def url_exists(url):
 			c.close()
 			return True if response_code < 400 else False
 		except pycurl.error as err:
-			errno, errstr = err
+			errno = err
+		except pycurl.error as err1:
+			errstr = err1
 			raise OSError('An error occurred: {}'.format(errstr))
 	else:
 		raise ValueError('"{}" is not a valid url'.format(url))
