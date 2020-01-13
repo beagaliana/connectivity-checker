@@ -44,12 +44,6 @@ class Ui_Dialog(object):
 		self.List.addItem("")
 		self.List.addItem("")
 		self.List.addItem("")
-		#f = open("/Users/soufianetai/Desktop/AGH/Python/GUI/URLs.txt", "r")
-		#urls=f.readlines()
-		#self.List.addItems(urls-"\n")
-		#for line in urls:
-    	#	words = line
-		#f.close()
 		self.Delete = QtWidgets.QPushButton(Dialog)
 		self.Delete.setGeometry(QtCore.QRect(240, 200, 101, 32))
 		self.Delete.setObjectName("Delete")
