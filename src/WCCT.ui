@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Dialog</class>
+ <widget class="QDialog" name="Dialog">
+  <property name="enabled">
+   <bool>true</bool>
+  </property>
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>410</width>
+    <height>329</height>
+   </rect>
+  </property>
+  <property name="font">
+   <font>
+    <weight>75</weight>
+    <italic>true</italic>
+    <bold>true</bold>
+   </font>
+  </property>
+  <property name="mouseTracking">
+   <bool>false</bool>
+  </property>
+  <property name="windowTitle">
+   <string>WEB CONNECTIVITY CHECKER TOOL</string>
+  </property>
+  <property name="toolTipDuration">
+   <number>-1</number>
+  </property>
+  <property name="statusTip">
+   <string>Ready</string>
+  </property>
+  <property name="whatsThis">
+   <string/>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">alternate-background-color: rgb(39, 39, 40);</string>
+  </property>
+  <widget class="QPushButton" name="Add">
+   <property name="geometry">
+    <rect>
+     <x>150</x>
+     <y>100</y>
+     <width>101</width>
+     <height>32</height>
+    </rect>
+   </property>
+   <property name="statusTip">
+    <string>Add URL to the list</string>
+   </property>
+   <property name="text">
+    <string>Add</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="Status">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>250</y>
+     <width>371</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="maximumSize">
+    <size>
+     <width>10000</width>
+     <height>25</height>
+    </size>
+   </property>
+   <property name="text">
+    <string>Ready</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+   <property name="wordWrap">
+    <bool>false</bool>
+   </property>
+   <property name="textInteractionFlags">
+    <set>Qt::TextBrowserInteraction</set>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="Quit">
+   <property name="geometry">
+    <rect>
+     <x>170</x>
+     <y>280</y>
+     <width>67</width>
+     <height>32</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Quit</string>
+   </property>
+  </widget>
+  <widget class="QComboBox" name="List">
+   <property name="geometry">
+    <rect>
+     <x>40</x>
+     <y>150</y>
+     <width>341</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="editable">
+    <bool>false</bool>
+   </property>
+   <property name="currentText">
+    <string>www.esa.edu.agh.pl</string>
+   </property>
+   <item>
+    <property name="text">
+     <string>www.esa.edu.agh.pl</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>www.google.com</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>www.facebook.com</string>
+    </property>
+   </item>
+  </widget>
+  <widget class="QPushButton" name="Delete">
+   <property name="geometry">
+    <rect>
+     <x>240</x>
+     <y>200</y>
+     <width>101</width>
+     <height>32</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Delete</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="Connect2">
+   <property name="geometry">
+    <rect>
+     <x>70</x>
+     <y>200</y>
+     <width>101</width>
+     <height>32</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Connect</string>
+   </property>
+  </widget>
+  <widget class="QPlainTextEdit" name="textwebsite">
+   <property name="geometry">
+    <rect>
+     <x>40</x>
+     <y>50</y>
+     <width>331</width>
+     <height>21</height>
+    </rect>
+   </property>
+  </widget>
+ </widget>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>Quit</sender>
+   <signal>clicked()</signal>
+   <receiver>Dialog</receiver>
+   <slot>close()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>236</x>
+     <y>311</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>199</x>
+     <y>149</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>Delete</sender>
+   <signal>clicked()</signal>
+   <receiver>List</receiver>
+   <slot>clearEditText()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>290</x>
+     <y>215</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>180</x>
+     <y>165</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>Add</sender>
+   <signal>clicked()</signal>
+   <receiver>textwebsite</receiver>
+   <slot>selectAll()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>290</x>
+     <y>115</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>205</x>
+     <y>60</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>
