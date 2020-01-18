@@ -14,6 +14,8 @@ class MainPage(QDialog):
 		self.Connect2.clicked.connect(self.write2history)
 		self.Add.clicked.connect(self.AddInList)
 		self.Delete.clicked.connect(self.removeItem)
+		self.History.clicked.connect(self.history)
+		
 		f = open("URLs.txt", "r")
 		urls=f.readlines()
 		for line in urls:
@@ -27,6 +29,11 @@ class MainPage(QDialog):
 		f = open("URLs.txt", "a")
 		f.write(url+":")
 		f.close()
+	
+	def history(self):
+		from HistoryPage import HistoryPage
+		classHistory=HistoryPage()
+		classHistory.exec_()
 	
 	def write2history(self):
                 dt = datetime.now().strftime("%d/%m/%Y %H:%M:%S")
