@@ -7,12 +7,12 @@ import pycurl, validators
 class MainPage(QDialog):
 	def __init__(self):
 		super(MainPage, self).__init__()
-		loadUi('/Users/soufianetai/Desktop/AGH/Python/GUI/WCCT.ui', self)
+		loadUi('WCCT.ui', self)
 		#functions
 		self.Connect2.clicked.connect(self.check)
 		self.Add.clicked.connect(self.AddInList)
 		self.Delete.clicked.connect(self.removeItem)
-		f = open("/Users/soufianetai/Desktop/AGH/Python/GUI/URLs.txt", "r")
+		f = open("URLs.txt", "r")
 		urls=f.readlines()
 		for line in urls:
 			words = line.split(":")
@@ -22,7 +22,7 @@ class MainPage(QDialog):
 	def AddInList(self):
 		url=self.textwebsite.toPlainText()
 		self.List.addItem(url)
-		f = open("/Users/soufianetai/Desktop/AGH/Python/GUI/URLs.txt", "a")
+		f = open("URLs.txt", "a")
 		f.write(url+":")
 		f.close()
 	
@@ -30,7 +30,7 @@ class MainPage(QDialog):
 		index=self.List.currentIndex()
 		url=self.List.currentText()
 		self.List.removeItem(index)
-		with open("/Users/soufianetai/Desktop/AGH/Python/GUI/URLs.txt", "r+") as f:
+		with open("URLs.txt", "r+") as f:
 			d = f.readlines()
 			f.seek(0)
 			for i in d:
