@@ -10,6 +10,7 @@ class MainPage(QDialog):
 		loadUi('WCCT.ui', self)
 		#functions
 		self.Connect2.clicked.connect(self.check)
+		self.Connect2.clicked.connect(self.write2history)
 		self.Add.clicked.connect(self.AddInList)
 		self.Delete.clicked.connect(self.removeItem)
 		f = open("URLs.txt", "r")
@@ -23,6 +24,12 @@ class MainPage(QDialog):
 		url=self.textwebsite.toPlainText()
 		self.List.addItem(url)
 		f = open("URLs.txt", "a")
+		f.write(url+":")
+		f.close()
+	
+	def write2history(self):
+		url=self.List.currentText()
+		f = open("history.txt", "a")
 		f.write(url+":")
 		f.close()
 	
