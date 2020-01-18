@@ -3,6 +3,7 @@ from PyQt5.QtWidgets import QDialog, QApplication
 from PyQt5.QtCore import pyqtSlot
 from PyQt5.uic import loadUi
 import pycurl, validators
+from datetime import datetime
 
 class MainPage(QDialog):
 	def __init__(self):
@@ -28,9 +29,10 @@ class MainPage(QDialog):
 		f.close()
 	
 	def write2history(self):
+                dt = datetime.now().strftime("%d/%m/%Y %H:%M:%S")
 		url=self.List.currentText()
 		f = open("history.txt", "a")
-		f.write(url+":")
+		f.write(url + ", " + dt + ":")
 		f.close()
 	
 	def removeItem(self):
