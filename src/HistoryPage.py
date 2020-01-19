@@ -6,9 +6,9 @@ from PyQt5.uic import loadUi
 class HistoryPage(QDialog):
 	def __init__(self):
 		super(HistoryPage, self).__init__()
-		loadUi('/Users/soufianetai/Desktop/AGH/Python/GUI/HistoryGUI.ui', self)
+		loadUi('HistoryGUI.ui', self)
 		#functions
-		f = open("/Users/soufianetai/Desktop/AGH/Python/GUI/history.txt", "r")
+		f = open("history.txt", "r")
 		urls=f.read()
 		self.History.setPlainText(urls)
 		
