@@ -19,7 +19,7 @@ class MainPage(QDialog):
 		f = open("URLs.txt", "r")
 		urls=f.readlines()
 		for line in urls:
-			words = line.split(":")
+			words = line.split("\n")
 			self.List.addItems(words)
 		f.close()
 
@@ -27,7 +27,7 @@ class MainPage(QDialog):
 		url=self.textwebsite.toPlainText()
 		self.List.addItem(url)
 		f = open("URLs.txt", "a")
-		f.write(url+":")
+		f.write(url+"\n")
 		f.close()
 	
 	def history(self):
@@ -39,7 +39,8 @@ class MainPage(QDialog):
                 dt = datetime.now().strftime("%d/%m/%Y %H:%M:%S")
 		url=self.List.currentText()
 		f = open("history.txt", "a")
-		f.write(url + ", " + dt + ":")
+		result=self.url_exists()
+		f.write(url + ", " + dt + "" + str(result) + "\n")
 		f.close()
 	
 	def removeItem(self):
@@ -50,7 +51,7 @@ class MainPage(QDialog):
 			d = f.readlines()
 			f.seek(0)
 			for i in d:
-				if i != url:
+				if i.strip("\n") != url:
 					f.write(i)
 			f.truncate()
 
