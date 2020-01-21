@@ -37,8 +37,7 @@ class MainPage(QDialog):
 		classHistory.exec_()
 	
         def delete_history(self):
-            if os.path.exists("history.txt"):
-                os.remove("history.txt")
+            open('history.txt', 'w').close()
 
         def write2history(self):
                 dt = datetime.now().strftime("%d/%m/%Y %H:%M:%S")
