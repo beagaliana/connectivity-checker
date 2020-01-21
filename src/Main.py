@@ -4,6 +4,7 @@ from PyQt5.QtCore import pyqtSlot
 from PyQt5.uic import loadUi
 import pycurl, validators
 from datetime import datetime
+import os
 
 class MainPage(QDialog):
 	def __init__(self):
@@ -35,13 +36,17 @@ class MainPage(QDialog):
 		classHistory=HistoryPage()
 		classHistory.exec_()
 	
-	def write2history(self):
+        def delete_history(self):
+            if os.path.exists("history.txt"):
+                os.remove("history.txt")
+
+        def write2history(self):
                 dt = datetime.now().strftime("%d/%m/%Y %H:%M:%S")
-		url=self.List.currentText()
-		f = open("history.txt", "a")
-		result=self.url_exists()
-		f.write(url + ", " + dt + "" + str(result) + "\n")
-		f.close()
+                url=self.List.currentText()
+                f = open("history.txt", "a")
+                result=self.url_exists()
+                f.write(url + ", " + dt + "" + str(result) + "\n")
+                f.close()
 	
 	def removeItem(self):
 		index=self.List.currentIndex()
