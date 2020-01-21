@@ -54,8 +54,11 @@ class Ui_Dialog(object):
         self.textwebsite.setGeometry(QtCore.QRect(40, 30, 331, 21))
         self.textwebsite.setObjectName("textwebsite")
         self.History = QtWidgets.QPushButton(Dialog)
-        self.History.setGeometry(QtCore.QRect(151, 200, 101, 32))
+        self.History.setGeometry(QtCore.QRect(70, 200, 101, 32))
         self.History.setObjectName("History")
+        self.DeleteHistory = QtWidgets.QPushButton(Dialog)
+        self.DeleteHistory.setGeometry(QtCore.QRect(220, 200, 121, 32))
+        self.DeleteHistory.setObjectName("DeleteHistory")
 
         self.retranslateUi(Dialog)
         self.Quit.clicked.connect(Dialog.close)
@@ -78,6 +81,7 @@ class Ui_Dialog(object):
         self.Delete.setText(_translate("Dialog", "Delete"))
         self.Connect2.setText(_translate("Dialog", "Connect"))
         self.History.setText(_translate("Dialog", "History"))
+        self.DeleteHistory.setText(_translate("Dialog", "Delete History"))
 
 
 if __name__ == "__main__":
